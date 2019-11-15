@@ -1,9 +1,6 @@
 # readKEG
 # How to use?
-# Put only one .keg file together with the readKEG.R in the same folder. 
-# Open the readKEG.R in Rstudio
-# Choose all of the commands on Command windows (Upper left corner) and run.
-# You will find an output.csv generated in the same folder.
+# 1. Put only one .keg file together with the readKEG.R in the same folder; 2. Open the readKEG.R in Rstudio; 3. Choose all of the commands on Command windows (Upper left corner) and run; 4. You will find an output.csv generated in the same folder.
 
 # This script converts a .keg file to a well organized .csv file. 
 
