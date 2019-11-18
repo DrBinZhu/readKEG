@@ -10,10 +10,10 @@
 # Any bug report or suggestion could be sent to Dr. Bin Zhu via Email: binzhu0824@gmail.com
 
 rm(list=ls())
-setwd(dirname(rstudioapi::getSourceEditorContext()$path))
-PATH <- setwd(dirname(rstudioapi::getSourceEditorContext()$path))
+PATH <- getwd()
+setwd(PATH)
 
-FILE <- list.files(path = PATH, pattern = '.keg')
+FILE <- list.files(pattern = '.keg')
 
 data <- read.csv(FILE)
 
