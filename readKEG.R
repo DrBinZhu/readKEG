@@ -9,9 +9,13 @@
 
 # Any bug report or suggestion could be sent to Dr. Bin Zhu via Email: binzhu0824@gmail.com
 
+################## run in the first time of use ########################
+ install.packages("rstudioapi")
+#########################################################################
+
 rm(list=ls())
-PATH <- getwd()
-setwd(PATH)
+
+setwd(dirname(rstudioapi::getSourceEditorContext()$path))
 
 FILE <- list.files(pattern = '.keg')
 
