@@ -9,17 +9,13 @@
 
 # Any bug report or suggestion could be sent to Dr. Bin Zhu via Email: binzhu0824@gmail.com
 
-################## run in the first time of use ########################
- install.packages("rstudioapi")
-#########################################################################
-
 rm(list=ls())
 
 setwd(dirname(rstudioapi::getSourceEditorContext()$path))
 
 FILE <- list.files(pattern = '.keg')
 
-data <- read.csv(FILE)
+data <- read.delim(FILE)
 
 len <- dim(data)[1]
 n=1
@@ -50,12 +46,18 @@ switch(max,
           }
           string <- strsplit(c, " ")[[1]]     
           start <- strsplit(string, NULL)[[1]]    
+        
+          if (toString(start)==""){
+            next
+          }
           
           switch(start[1],
                  "A" = {level1 = c},
                  "B" = {level2 = c},
-                 "C" = {level3 = c
-                 level4 = toString(data[a,2]) ###
+                 "C" = {
+                   level3 = c
+                   level4 = toString(data[a,2])
+                 
                  output <- rbind(output, c(level1,level2,level3,level4))  
                  n=n+1})
         }
@@ -66,6 +68,8 @@ switch(max,
         rownames(output) <- NULL
         write.csv(output,'output.csv')
       },
+      
+      
       "D"={
         output <- t(matrix(c('level1','level2','level3','info1','info2'))) ###
         for (a in 1:len) {
@@ -77,13 +81,19 @@ switch(max,
             
           string <- strsplit(c, " ")[[1]]
           start <- strsplit(string, NULL)[[1]]  
-  
+          
+          if (toString(start)==""){
+            next
+          }
+          
           switch(start[1],
                  "A" = {level1 = c},
                  "B" = {level2 = c},
                  "C" = {level3 = c},
-                 "D" = {level4 = c
-                 level5 = toString(data[a,2]) ###
+                 "D" = {
+                   level4 = c
+                   level5 = toString(data[a,2])
+                 
                  output <- rbind(output, c(level1,level2,level3,level4,level5))   ###
                  #output[n,1:4] = c(level1,level2,level3,level4)
                  n=n+1})
@@ -109,15 +119,21 @@ switch(max,
             next
           }
           string <- strsplit(c, " ")[[1]]     
-          start <- strsplit(string, NULL)[[1]]    
+          start <- strsplit(string, NULL)[[1]]
+          
+          if (toString(start)==""){
+            next
+          }
           
           switch(start[1],
                  "A" = {level1 = c},
                  "B" = {level2 = c},
                  "C" = {level3 = c},
                  "D" = {level4 = c},
-                 "E" = {level5 = c
-                 level6 = toString(data[a,2]) ###
+                 "E" = {
+                   level5 = c
+                   level6 = toString(data[a,2])
+                 
                  output <- rbind(output, c(level1,level2,level3,level4,level5,level6))  
                  n=n+1})
           
