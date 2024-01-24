@@ -174,12 +174,26 @@ switch(max,
         output <- output[-1,]    
         rownames(output) <- NULL
         
-        
-        write.csv(output,'output.csv')
-        
       }
   
   
 )
 
+output_ori = output
 
+output = output_ori
+output$level1 = gsub('^.+? (.*)', "\\1",output$level1)
+table(output$level1)
+
+for (a in 1:2) {output$level2 = gsub('^.+? (.*)', "\\1",output$level2)}
+table(output$level2)
+
+for (a in 1:3) {output$level3 = gsub('^.+? (.*)', "\\1",output$level3)}
+output$level3 = str_remove_all(output$level3, ' \\[.*')
+unique(output$level3)
+
+output$Gene_ID = gsub('^.+? (.*)', "\\1",output$info2)
+output$Gene_ID = str_remove_all(output$Gene_ID, ';.*')
+output = output[output$Gene_ID != '',]
+  
+write.csv(output,'output.csv')
